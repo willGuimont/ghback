@@ -24,10 +24,9 @@ defmodule Github do
   def list_repositories(api, page) do
     url = api.base_url <> "/user/repos?per_page=30&page=#{page}"
 
-    # TODO handle failure
-    case HTTPoison.get(url, headers(api)) do
-      {:ok, response} -> Poison.decode(response.body)
-      {:error, err} -> {:error, err}
+    with {:ok, response} <- HTTPoison.get(url, headers(api)),
+         {:ok, decoded} <- Poison.decode(response.body) do
+      {:ok, decoded}
     end
   end
 end
