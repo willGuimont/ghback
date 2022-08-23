@@ -1,6 +1,5 @@
+Dockerfile
 /.idea/
-*.secret
-/ssh_keys/
 /_build/
 /cover/
 /deps/

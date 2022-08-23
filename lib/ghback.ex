@@ -57,8 +57,9 @@ defmodule Ghback do
     {:ok, name} = Map.fetch(repo, "name")
 
     if repo["owner"]["login"] == username do
+      IO.puts("Cloning #{name}...")
       "cd #{backup_path} && git clone #{ssh_url}" |> String.to_charlist() |> :os.cmd()
-      "cd #{backup_path}/#{name} && git pull" |> String.to_charlist() |> :os.cmd()
+      "cd #{backup_path}/#{name} && git fetch" |> String.to_charlist() |> :os.cmd()
     end
   end
 end
