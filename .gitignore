@@ -10,3 +10,5 @@ erl_crash.dump
 *.ez
 ghback-*.tar
 /tmp/
+*.iml
+
